@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace NetExtensions
 {
-    public abstract class RequestHandlerBase<TContext, TRequest, TResponse> : Repository<TContext>, IRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse> where TContext : DbContext, new()
+    public abstract class RequestHandlerBase<TContext, TRequest, TResponse> : Repository<TContext>, IRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse> where TContext : DbContext
     {
         protected IMapper Mapper;
 
