@@ -7,13 +7,13 @@ namespace NetExtensions
 {
     public abstract class RequestHandlerMediator<TRequest, TResponse> : IRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
-        private readonly ILogger<RequestHandlerMediator<TRequest, TResponse>> _logger;
-        private readonly IMediator _mediator;
+        protected readonly ILogger<RequestHandlerMediator<TRequest, TResponse>> Logger;
+        protected readonly IMediator Mediator;
 
         protected RequestHandlerMediator(ILogger<RequestHandlerMediator<TRequest, TResponse>> logger, IMediator mediator)
         {
-            _logger = logger;
-            _mediator = mediator;
+            Logger = logger;
+            Mediator = mediator;
         }
 
         public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);

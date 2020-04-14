@@ -8,13 +8,13 @@ namespace NetExtensions
 {
     public abstract class RequestHandlerMapper<TRequest, TResponse> : IRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse> 
     {
-        private readonly ILogger<RequestHandlerMapper<TRequest, TResponse>> _logger;
-        private readonly IMapper _mapper;
+        protected readonly ILogger<RequestHandlerMapper<TRequest, TResponse>> Logger;
+        protected readonly IMapper Mapper;
 
         protected RequestHandlerMapper(ILogger<RequestHandlerMapper<TRequest, TResponse>> logger, IMapper mapper)
         {
-            _logger = logger;
-            _mapper = mapper;
+            Logger = logger;
+            Mapper = mapper;
         }
 
         public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
